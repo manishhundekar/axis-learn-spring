@@ -40,7 +40,7 @@ class StudentService {
                 return "Deleted Successfully"
             }
         }
-        return null
+        throw StudentNotFoundException("Student not found")
     }
 
 }
