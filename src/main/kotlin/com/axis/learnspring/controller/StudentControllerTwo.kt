@@ -3,6 +3,7 @@ package com.axis.learnspring.controller
 import com.axis.learnspring.model.Student
 import com.axis.learnspring.service.StudentServiceTwo
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.MessageSource
 import org.springframework.hateoas.EntityModel
 import org.springframework.hateoas.Link
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
@@ -10,7 +11,16 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-class StudentControllerTwo(@Autowired val studentService: StudentServiceTwo) {
+class StudentControllerTwo(
+    @Autowired val studentService: StudentServiceTwo,
+    @Autowired val messageSource: MessageSource
+) {
+
+    //Hello World
+    @GetMapping("/helloworld")
+    fun helloWorld(@RequestHeader(name = "Accept-Language", required = false) locale: Locale): String? {
+        return messageSource.getMessage("com.axis.key.helloworld", null, "Welcome to Axis Bank Default", locale)
+    }
 
     //Get all students
     @GetMapping("/students")
@@ -43,7 +53,8 @@ class StudentControllerTwo(@Autowired val studentService: StudentServiceTwo) {
     fun getStudent(@PathVariable id: Int): Student {
         //WebMvcLinkBuilder
         val student = studentService.retrieveStudent(id)
-        val link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.javaClass).getStudents()).withRel("likeAction")
+        val link =
+            WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.javaClass).getStudents()).withRel("likeAction")
         return student.get().add(link)
     }
 
@@ -75,5 +86,6 @@ class StudentControllerTwo(@Autowired val studentService: StudentServiceTwo) {
 //Delete Student $
 
 //HATEOAS- Hypermedia as the Engine of Application State
-
 //Data + urls
+
+//MessageSource + Internationalisation
