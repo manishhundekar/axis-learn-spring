@@ -23,6 +23,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.springframework.boot:spring-boot-starter-hateoas")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.6")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.1")
 	runtimeOnly("com.h2database:h2")

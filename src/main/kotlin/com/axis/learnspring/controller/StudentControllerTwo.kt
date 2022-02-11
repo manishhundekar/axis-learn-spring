@@ -2,6 +2,7 @@ package com.axis.learnspring.controller
 
 import com.axis.learnspring.model.Student
 import com.axis.learnspring.service.StudentServiceTwo
+import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.hateoas.EntityModel
@@ -59,6 +60,7 @@ class StudentControllerTwo(
     }
 
     //Add Student
+    @Operation(description = "Description", summary = "Summary")
     @PostMapping("/student")
     fun addStudent(@RequestBody student: Student): Student {
         return studentService.add(student)
@@ -91,3 +93,6 @@ class StudentControllerTwo(
 //MessageSource + Internationalisation
 
 //Content Negotiation
+
+//Open API
+//Swagger UI
