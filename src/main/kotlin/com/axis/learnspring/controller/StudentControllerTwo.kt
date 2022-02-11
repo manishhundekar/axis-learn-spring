@@ -89,3 +89,5 @@ class StudentControllerTwo(
 //Data + urls
 
 //MessageSource + Internationalisation
+
+//Content Negotiation
