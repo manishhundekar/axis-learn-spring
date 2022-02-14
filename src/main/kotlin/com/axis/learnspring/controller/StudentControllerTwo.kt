@@ -10,6 +10,7 @@ import org.springframework.hateoas.Link
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.web.bind.annotation.*
 import java.util.*
+import javax.validation.Valid
 
 @RestController
 class StudentControllerTwo(
@@ -62,7 +63,7 @@ class StudentControllerTwo(
     //Add Student
     @Operation(description = "Description", summary = "Summary")
     @PostMapping("/student")
-    fun addStudent(@RequestBody student: Student): Student {
+    fun addStudent(@Valid @RequestBody student: Student): Student {
         return studentService.add(student)
     }
 
